@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WNL Season XI · Tier 1 Championship fail distribution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --bg:#161615; --text:#f2f1ec; --text2:#c2c1b6; --muted:#8a887f;
+  --border:rgba(255,255,255,0.14); --border-strong:rgba(255,255,255,0.32);
+  --fail:224,105,62; --finish:45,178,135; --grid:#2c2c2a; --panel:#1d1d1b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.6}
+main{max-width:1200px;margin:0 auto;padding:48px 20px 80px}
+header{border-bottom:1px solid var(--border-strong);padding-bottom:24px;margin-bottom:8px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1{font-size:30px;font-weight:600;line-height:1.25;margin:0 0 12px}
+h2{font-size:20px;font-weight:600;margin:0 0 4px}
+.sub{color:var(--text2);font-size:15px;margin:0;max-width:620px}
+section{margin-top:56px}
+.stagehead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px;margin-bottom:6px}
+.bignum{font-family:"IBM Plex Mono",monospace;font-size:34px;font-weight:500;
+  color:rgb(var(--finish))}
+.bignum small{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}
+.note{font-size:13px;color:var(--text2);margin:4px 0 20px;max-width:640px}
+.tablewrap{overflow-x:visible}
+table.heat{border-collapse:collapse;width:100%;table-layout:fixed}
+table.heat th{font-weight:400}
+table.heat .rowlab{width:150px;padding:5px 8px 5px 0;font-size:12.5px;white-space:nowrap;text-align:left}
+table.heat .rowlab .n{color:var(--muted);font-size:11px;font-family:"IBM Plex Mono",monospace}
+table.heat td{ text-align:center;padding:5px 2px;font-size:12px;
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+table.heat tr{border-top:0.5px solid var(--border)}
+table.heat tr.all{border-top:1.5px solid var(--border-strong);font-weight:500}
+.colhead{height:108px;position:relative}
+.colhead span{position:absolute;bottom:4px;left:55%;transform:rotate(-48deg);
+  transform-origin:bottom left;white-space:nowrap;font-size:11px;color:var(--text2)}
+.fincol{border-left:0.5px solid var(--border-strong)}
+.legendline{font-size:11.5px;color:var(--muted);margin:10px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
+.controls .lab{font-size:12px;color:var(--text2);margin-right:2px}
+.controls button{font-family:inherit;font-size:13px;padding:5px 13px;cursor:pointer;
+  background:transparent;color:var(--text);border:1px solid var(--border-strong);
+  border-radius:7px}
+.controls button.on{background:var(--panel);font-weight:600;border-color:var(--text2)}
+#leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 12px;font-size:12px;color:var(--text2)}
+#leg span.item{display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none}
+#leg span.sw{display:inline-block;width:18px}
+.chartbox{position:relative;width:100%;height:420px}
+footer{margin-top:72px;border-top:1px solid var(--border);padding-top:20px;
+  font-size:13px;color:var(--text2)}
+footer p{margin:0 0 8px;max-width:680px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow">World Ninja League · Season XI · Tier 1 Championships</p>
+  <h1>Where the runs ended</h1>
+  <p class="sub">Fail distribution across 16 divisions and three stages, from 4,395 championship
+  runs. On these courses a single miss ends the run, so each athlete's result marks exactly one
+  obstacle — the one that stopped them — or a finish.</p>
+</header>
+
+<section id="s1sec">
+  <div class="stagehead"><h2>Stage 1</h2>
+    <span class="bignum">48.3%<small>of 2,138 starters finished</small></span></div>
+  <p class="note">The Octopus, the final obstacle, ended 32% of all runs — more than the other
+  seven obstacles combined. The outlier is Preteen Male, where Spinning Baskets alone eliminated
+  39% of the division.</p>
+  <div class="tablewrap"><div id="s1"></div></div>
+</section>
+
+<section id="s2sec">
+  <div class="stagehead"><h2>Stage 2</h2>
+    <span class="bignum">17.0%<small>of 1,326 starters finished</small></span></div>
+  <p class="note">Salmon Ladder to Sky Trap was the wall for the field at large, taking 37% of
+  all starters. The Katanas told a different story: only a third of the field ever reached them,
+  but they ended most Elite runs — Elite Male finished the stage zero times.</p>
+  <div class="tablewrap"><div id="s2"></div></div>
+</section>
+
+<section id="s3sec">
+  <div class="stagehead"><h2>Stage 3</h2>
+    <span class="bignum">1.8%<small>of 931 starters finished</small></span></div>
+  <p class="note">One executioner: Swivel Limit eliminated 53% of everyone who started the stage,
+  reaching 60–72% in several divisions. Only 17 athletes cleared the Flying Bar to finish.</p>
+  <div class="tablewrap"><div id="s3"></div></div>
+</section>
+
+<section>
+  <h2>Division by division</h2>
+  <p class="note">One line per division — solid for male, dashed for female, one hue per age
+  group. Three lenses: where runs ended (of starters), who was still alive (of starters), and how
+  lethal each obstacle was for the athletes who actually reached it. Click legend entries to hide
+  or show divisions. In the conditional view, lines break where effectively nobody reached the
+  obstacle, and late-course values rest on few athletes.</p>
+  <div class="controls">
+    <span class="lab">Stage</span>
+    <button id="bs0">Stage 1</button><button id="bs1">Stage 2</button><button id="bs2">Stage 3</button>
+    <span style="width:10px"></span>
+    <span class="lab">View</span>
+    <button id="bm0">Eliminated at obstacle</button>
+    <button id="bm1">Still surviving</button>
+    <button id="bm2">Fail rate if reached</button>
+  </div>
+  <div id="leg"></div>
+  <div class="chartbox"><canvas id="divChart" role="img"
+    aria-label="Line chart of fail distribution, survival, or conditional fail rate by obstacle, one line per division"></canvas></div>
+</section>
+
+<footer>
+  <p><strong>Method.</strong> Results scraped from the official
+  <a href="https://worldninjaleague.org/t1-championships-results/">WNL T1 Championships results</a>
+  (NinjaWorks timing data). Because a fail ends the run, an athlete's fail point is one past their
+  last completed obstacle; obstacle names and order were reconstructed from the recorded results
+  and the published course maps. Heatmap cells show the percentage of division starters eliminated
+  at each obstacle; · means none; values under 1% display as &lt;1.</p>
+  <p>Divisions ordered youngest to oldest, Elite last. Counts beside division names are starters.</p>
+</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+var STAGES = [
+ {obst:['Angled Steps','Pole Vault','Ring Slider','Tac Board\u2013Gate Keeper','Shelf Drop','Spinning Baskets','Block Run','Octopus'],
+  rows:[
+  ['Kids Male',113,[0,7.1,0.9,3.5,9.7,3.5,0.9,10.6],63.7],
+  ['Kids Female',82,[0,3.7,0,7.3,9.8,3.7,2.4,23.2],50.0],
+  ['Mature Kids Male',238,[0,2.9,0.8,1.3,0.4,0.8,0.4,55.5],37.8],
+  ['Mature Kids Female',157,[0,1.9,0,1.3,2.5,1.3,0,26.1],66.9],
+  ['Preteen Male',212,[0,0.5,0,1.4,3.8,39.2,1.4,34.9],18.9],
+  ['Preteen Female',149,[0,0.7,2.7,1.3,2.7,2.0,1.3,12.1],77.2],
+  ['Teen Male',214,[0,1.9,0,2.8,0.5,15.9,0.5,31.3],47.2],
+  ['Teen Female',112,[0,0,0.9,2.7,0,0.9,2.7,38.4],54.5],
+  ['Young Adult Male',183,[0,0,0,1.1,1.1,6.6,8.2,27.3],55.7],
+  ['Young Adult Female',63,[0,1.6,0,1.6,3.2,0,6.3,60.3],27.0],
+  ['Adult Male',155,[0,0.6,0,2.6,1.9,12.9,17.4,29.7],34.8],
+  ['Adult Female',69,[0,1.4,1.4,0,15.9,7.2,2.9,36.2],34.8],
+  ['Masters Male',110,[0,0.9,0,1.8,1.8,6.4,1.8,35.5],51.8],
+  ['Masters Female',55,[0,5.5,1.8,3.6,5.5,0,0,23.6],60.0],
+  ['Elite Male',170,[0,0,0,0,0.6,7.1,9.4,28.8],54.1],
+  ['Elite Female',56,[0,0,0,1.8,0,5.4,0,42.9],50.0],
+  ['All divisions',2138,[0,1.6,0.5,1.9,2.9,8.9,3.7,32.3],48.3]]},
+ {obst:['Ascending Steps','Honeycomb','Door Drop','Tik Tok V2','Big Tac Toe','Spring Panel','French Toast Sticks','Salmon Ladder\u2013Sky Trap','Katanas'],
+  rows:[
+  ['Kids Male',72,[1.4,1.4,4.2,12.5,5.6,1.4,1.4,47.2,1.4],23.6],
+  ['Kids Female',50,[0,2.0,6.0,18.0,2.0,2.0,4.0,36.0,2.0],28.0],
+  ['Mature Kids Male',143,[0,3.5,0,3.5,2.1,0.7,7.7,47.6,9.8],25.2],
+  ['Mature Kids Female',105,[0,10.5,1.9,3.8,0,0,0,53.3,4.8],25.7],
+  ['Preteen Male',127,[0,2.4,0,2.4,0,0,2.4,44.1,18.9],29.9],
+  ['Preteen Female',115,[0.9,5.2,0.9,6.1,1.7,0,8.7,57.4,12.2],7.0],
+  ['Teen Male',129,[0,3.9,2.3,3.9,1.6,0,2.3,31.0,42.6],12.4],
+  ['Teen Female',68,[0,1.5,8.8,0,1.5,0,16.2,42.6,17.6],11.8],
+  ['Young Adult Male',109,[0,0.9,0,3.7,21.1,1.8,1.8,28.4,15.6],26.6],
+  ['Young Adult Female',38,[0,15.8,2.6,5.3,5.3,0,13.2,26.3,10.5],21.1],
+  ['Adult Male',93,[0,5.4,0,8.6,26.9,7.5,10.8,30.1,5.4],5.4],
+  ['Adult Female',41,[0,26.8,2.4,2.4,4.9,0,26.8,14.6,9.8],12.2],
+  ['Masters Male',67,[0,17.9,0,6.0,0,0,34.3,17.9,19.4],4.5],
+  ['Masters Female',33,[0,0,3.0,15.2,0,0,9.1,24.2,21.2],27.3],
+  ['Elite Male',102,[0,1.0,0,5.9,7.8,2.0,0,27.5,55.9],0.0],
+  ['Elite Female',34,[0,5.9,0,0,5.9,0,0,11.8,70.6],5.9],
+  ['All divisions',1326,[0.2,5.4,1.6,5.4,5.7,1.1,7.2,37.3,19.4],17.0]]},
+ {obst:['Vertebrae','Staple','Chain Link','Mic Drop','Swivel Limit','Iron Summit','Cliffhanger','Flying Bar'],
+  rows:[
+  ['Kids Male',51,[0,0,19.6,35.3,31.4,3.9,5.9,2.0],2.0],
+  ['Kids Female',35,[0,0,8.6,25.7,31.4,5.7,20.0,8.6],0.0],
+  ['Mature Kids Male',101,[0,4.0,0,5.0,66.3,5.9,9.9,7.9],1.0],
+  ['Mature Kids Female',74,[0,5.4,0,17.6,41.9,5.4,20.3,8.1],1.4],
+  ['Preteen Male',89,[1.1,1.1,2.2,0,62.9,11.2,14.6,6.7],0.0],
+  ['Preteen Female',81,[0,9.9,4.9,1.2,58.0,17.3,0,0],8.6],
+  ['Teen Male',90,[13.3,4.4,1.1,3.3,72.2,0,5.6,0],0.0],
+  ['Teen Female',48,[14.6,6.2,0,6.2,60.4,4.2,6.2,2.1],0.0],
+  ['Young Adult Male',77,[3.9,2.6,1.3,0,36.4,16.9,22.1,11.7],5.2],
+  ['Young Adult Female',27,[0,14.8,18.5,22.2,44.4,0,0,0],0.0],
+  ['Adult Male',66,[6.1,13.6,4.5,3.0,62.1,1.5,9.1,0],0.0],
+  ['Adult Female',29,[0,6.9,3.4,24.1,51.7,0,13.8,0],0.0],
+  ['Masters Male',45,[2.2,0,4.4,22.2,33.3,13.3,24.4,0],0.0],
+  ['Masters Female',24,[0,0,54.2,0,8.3,4.2,16.7,16.7],0.0],
+  ['Elite Male',70,[0,0,2.9,0,64.3,10.0,11.4,7.1],4.3],
+  ['Elite Female',24,[4.2,12.5,4.2,4.2,66.7,0,8.3,0],0.0],
+  ['All divisions',931,[3.1,4.7,5.2,8.4,53.3,7.3,11.6,4.6],1.8]]}
+];
+
+var css = getComputedStyle(document.documentElement);
+var FAIL = css.getPropertyValue('--fail').trim();
+var FIN = css.getPropertyValue('--finish').trim();
+
+function heatCell(p, hue, hi){
+  var a = p===0 ? 0 : 0.06 + 0.74*Math.min(p,75)/75;
+  var bg = p===0 ? 'transparent' : 'rgba('+hue+','+a.toFixed(2)+')';
+  var tc = p===0 ? 'var(--muted)' : (p>=hi ? '#fff' : 'var(--text)');
+  var txt = p===0 ? '\u00b7' : (p<1 ? '&lt;1' : Math.round(p));
+  return '<td style="background:'+bg+';color:'+tc+'">'+txt+'</td>';
+}
+function renderHeat(el, s){
+  var h = '<table class="heat"><tr><th class="rowlab"></th>';
+  s.obst.forEach(function(o,i){
+    h += '<th class="colhead"><span>'+(i+1)+'. '+o+'</span></th>';
+  });
+  h += '<th class="colhead fincol" style="width:58px"><span>Finished</span></th></tr>';
+  s.rows.forEach(function(d,r){
+    var last = r === s.rows.length-1;
+    h += '<tr'+(last?' class="all"':'')+'><td class="rowlab">'+d[0]+
+         ' <span class="n">'+d[1]+'</span></td>';
+    d[2].forEach(function(p){ h += heatCell(p, FAIL, 45); });
+    var f = d[3];
+    h += '<td class="fincol" style="background:rgba('+FIN+','+
+         (0.06+0.64*f/100).toFixed(2)+');color:'+(f>=60?'#fff':'var(--text)')+'">'+
+         Math.round(f)+'</td></tr>';
+  });
+  h += '</table><p class="legendline">% of division starters eliminated at each obstacle · '+
+       'count = starters · · = none</p>';
+  document.getElementById(el).innerHTML = h;
+}
+renderHeat('s1', STAGES[0]);
+renderHeat('s2', STAGES[1]);
+renderHeat('s3', STAGES[2]);
+
+var isDark = true;
+var hues = isDark
+ ? {Kids:'#3987e5','Mature Kids':'#199e70',Preteen:'#c98500',Teen:'#2e9e2e','Young Adult':'#9085e9',Adult:'#e66767',Masters:'#d55181',Elite:'#d95926'}
+ : {Kids:'#2a78d6','Mature Kids':'#1baf7a',Preteen:'#eda100',Teen:'#008300','Young Adult':'#4a3aa7',Adult:'#e34948',Masters:'#e87ba4',Elite:'#eb6834'};
+var groups = ['Kids','Mature Kids','Preteen','Teen','Young Adult','Adult','Masters','Elite'];
+var divs = [];
+groups.forEach(function(g){ divs.push(g+' Male'); divs.push(g+' Female'); });
+var lineData = STAGES.map(function(s){
+  var fail = {};
+  s.rows.slice(0,16).forEach(function(d){ fail[d[0]] = d[2]; });
+  return { obst: s.obst, fail: fail };
+});
+var hidden = {}, stage = 0, mode = 0, chart = null;
+var muted = css.getPropertyValue('--muted').trim();
+var grid = css.getPropertyValue('--grid').trim();
+
+function survival(f){
+  var out=[100], run=100;
+  for (var i=0;i<f.length;i++){ run-=f[i]; out.push(Math.max(Math.round(run*10)/10,0)); }
+  return out;
+}
+function conditional(f){
+  var out=[], reached=100;
+  for (var i=0;i<f.length;i++){
+    out.push(reached < 1 ? null : Math.round(1000*f[i]/reached)/10);
+    reached -= f[i];
+  }
+  return out;
+}
+function build(){
+  var s = lineData[stage];
+  var labels = mode===1
+    ? ['Start'].concat(s.obst.map(function(o){return 'Past '+o;}))
+    : s.obst;
+  var ds = divs.map(function(d){
+    var g = d.replace(/ (Male|Female)$/,'');
+    var female = /Female$/.test(d);
+    var data = mode===0 ? s.fail[d] : (mode===1 ? survival(s.fail[d]) : conditional(s.fail[d]));
+    return { label:d, data:data, borderColor:hues[g], backgroundColor:hues[g],
+      borderWidth:2, borderDash: female?[6,4]:[], pointRadius:0, pointHoverRadius:4,
+      tension:0.15, spanGaps:false, hidden: !!hidden[d] };
+  });
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('divChart'), {
+    type:'line',
+    data:{ labels:labels, datasets:ds },
+    options:{ responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'nearest', axis:'x', intersect:false },
+      plugins:{ legend:{ display:false },
+        tooltip:{ itemSort:function(a,b){return b.parsed.y-a.parsed.y;},
+          callbacks:{ label:function(c){ return c.dataset.label+': '+(Math.round(c.parsed.y*10)/10)+'%'; } } } },
+      scales:{
+        x:{ ticks:{ autoSkip:false, maxRotation:45, minRotation:45, color:muted, font:{size:11} },
+            grid:{ display:false } },
+        y:{ min:0, max: mode===0 ? 80 : 100,
+            ticks:{ color:muted, callback:function(v){return v+'%';} }, grid:{ color:grid },
+            title:{ display:true, color:muted, font:{size:12},
+              text: mode===0 ? '% of starters eliminated'
+                  : (mode===1 ? '% of starters surviving' : '% failed, of those who reached it') } }
+      }
+    }
+  });
+  renderLegend();
+  styleButtons();
+}
+function renderLegend(){
+  var el = document.getElementById('leg');
+  el.innerHTML='';
+  divs.forEach(function(d){
+    var g = d.replace(/ (Male|Female)$/,'');
+    var female = /Female$/.test(d);
+    var item = document.createElement('span');
+    item.className='item';
+    item.style.opacity = hidden[d] ? '0.35' : '1';
+    var sw = document.createElement('span');
+    sw.className='sw';
+    sw.style.borderTop='2px '+(female?'dashed':'solid')+' '+hues[g];
+    item.appendChild(sw);
+    item.appendChild(document.createTextNode(d));
+    item.onclick=function(){
+      hidden[d]=!hidden[d];
+      chart.setDatasetVisibility(divs.indexOf(d), !hidden[d]);
+      chart.update();
+      item.style.opacity = hidden[d] ? '0.35' : '1';
+    };
+    el.appendChild(item);
+  });
+}
+function styleButtons(){
+  ['bs0','bs1','bs2'].forEach(function(id,i){
+    document.getElementById(id).className = i===stage ? 'on' : ''; });
+  ['bm0','bm1','bm2'].forEach(function(id,i){
+    document.getElementById(id).className = i===mode ? 'on' : ''; });
+}
+['bs0','bs1','bs2'].forEach(function(id,i){
+  document.getElementById(id).onclick=function(){stage=i;build();}; });
+['bm0','bm1','bm2'].forEach(function(id,i){
+  document.getElementById(id).onclick=function(){mode=i;build();}; });
+build();
+</script>
+</body>
+</html>
