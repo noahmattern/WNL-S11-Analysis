@@ -293,6 +293,21 @@ function build(){
 function renderLegend(){
   var el = document.getElementById('leg');
   el.innerHTML='';
+  [['Show all',false],['Hide all',true]].forEach(function(cfg){
+    var b = document.createElement('button');
+    b.textContent = cfg[0];
+    b.style.cssText = 'font-family:inherit;font-size:11.5px;padding:2px 10px;border-radius:6px;'+
+      'border:1px solid var(--border-strong);background:transparent;color:var(--text2);cursor:pointer;';
+    b.onclick = function(){
+      divs.forEach(function(d){ hidden[d] = cfg[1]; });
+      build();
+    };
+    el.appendChild(b);
+  });
+  var sep = document.createElement('span');
+  sep.textContent = '|';
+  sep.style.cssText = 'color:var(--border-strong);';
+  el.appendChild(sep);
   divs.forEach(function(d){
     var g = d.replace(/ (Male|Female)$/,'');
     var female = /Female$/.test(d);
