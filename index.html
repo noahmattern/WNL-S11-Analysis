@@ -9,21 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#ffffff; --text:#1a1a19; --text2:#55544f; --muted:#8a887f;
-  --border:rgba(20,20,18,0.12); --border-strong:rgba(20,20,18,0.3);
-  --fail:216,90,48; --finish:29,158,117; --grid:#e6e4dd; --panel:#faf9f6;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#161615; --text:#f2f1ec; --text2:#c2c1b6; --muted:#8a887f;
-    --border:rgba(255,255,255,0.14); --border-strong:rgba(255,255,255,0.32);
-    --fail:224,105,62; --finish:45,178,135; --grid:#2c2c2a; --panel:#1d1d1b;
-  }
+  color-scheme: dark;
+  --bg:#161615; --text:#f2f1ec; --text2:#c2c1b6; --muted:#8a887f;
+  --border:rgba(255,255,255,0.14); --border-strong:rgba(255,255,255,0.32);
+  --fail:224,105,62; --finish:45,178,135; --grid:#2c2c2a; --panel:#1d1d1b;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
   font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.6}
-main{max-width:860px;margin:0 auto;padding:48px 20px 80px}
+main{max-width:1200px;margin:0 auto;padding:48px 20px 80px}
 header{border-bottom:1px solid var(--border-strong);padding-bottom:24px;margin-bottom:8px}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:0.12em;
   text-transform:uppercase;color:var(--muted);margin:0 0 10px}
@@ -36,8 +30,8 @@ section{margin-top:56px}
   color:rgb(var(--finish))}
 .bignum small{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}
 .note{font-size:13px;color:var(--text2);margin:4px 0 20px;max-width:640px}
-.tablewrap{overflow-x:auto}
-table.heat{border-collapse:collapse;width:100%;min-width:640px;table-layout:fixed}
+.tablewrap{overflow-x:visible}
+table.heat{border-collapse:collapse;width:100%;table-layout:fixed}
 table.heat th{font-weight:400}
 table.heat .rowlab{width:150px;padding:5px 8px 5px 0;font-size:12.5px;white-space:nowrap;text-align:left}
 table.heat .rowlab .n{color:var(--muted);font-size:11px;font-family:"IBM Plex Mono",monospace}
@@ -231,7 +225,7 @@ renderHeat('s1', STAGES[0]);
 renderHeat('s2', STAGES[1]);
 renderHeat('s3', STAGES[2]);
 
-var isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+var isDark = true;
 var hues = isDark
  ? {Kids:'#3987e5','Mature Kids':'#199e70',Preteen:'#c98500',Teen:'#2e9e2e','Young Adult':'#9085e9',Adult:'#e66767',Masters:'#d55181',Elite:'#d95926'}
  : {Kids:'#2a78d6','Mature Kids':'#1baf7a',Preteen:'#eda100',Teen:'#008300','Young Adult':'#4a3aa7',Adult:'#e34948',Masters:'#e87ba4',Elite:'#eb6834'};
